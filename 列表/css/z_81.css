@@ -1,0 +1,135 @@
+body{
+	margin: 220px 200px 100px 500px;
+}
+#bj{
+	width: 250px;
+	height: 611px;
+	background-image: url(../images/bj.png);
+	background-repeat: no-repeat;
+	background-position: 30px 0px;
+	background-size: 210px 611px;
+	margin-top: -190px;
+}
+#things{
+	height: 15px;
+	width: 70px;
+	padding-left: 58px;
+	padding-top: 5px;
+	list-style-type: none;
+	color: white;
+	/*display: none;*/
+}
+#shang{
+	padding-left: 30px;
+	padding-top: 18px;
+	list-style-type: none;
+	margin-top: -35px;
+
+}
+#zhong{
+	padding-left: 30px;
+    margin-top: -10px;
+}
+#xia{
+	padding-left: 30px;
+	margin-top: -10px;
+}
+#wei{
+	padding-left: 30px;
+	margin-top: -10px;
+}
+#gril{
+	list-style-image: url(../images/lisqunzi.png);
+	list-style-position: inside;
+	background-image: url(../images/nvzhuangBJ.png);
+	width: 189px;
+	height: 28px;
+	padding-left: 8px;
+	line-height: 28px;
+	margin-left: -33px;
+
+}
+#boy{
+	list-style-image: url(../images/nanzhuang.png);
+	list-style-position: inside;
+	background-image: url(../images/nvzhuangBJ.png);
+	width: 189px;
+	height: 28px;
+	padding-left: 8px;
+	line-height: 28px;
+	margin-left: -33px;
+}
+#underwear{
+	list-style-image: url(../images/neiyi.png);
+	list-style-position: inside;
+	background-image: url(../images/nvzhuangBJ.png);
+	width: 189px;
+	height: 28px;
+	padding-left: 8px;
+	line-height: 28px;
+	margin-left: -33px;
+	margin-top: 5px;
+}
+#shoes{
+	list-style-image: url(../images/xiezi.png);
+	list-style-position: inside;
+	background-image: url(../images/nvzhuangBJ.png);
+	width: 189px;
+	height: 28px;
+	padding-left: 8px;
+	line-height: 28px;
+	margin-left: -33px;
+	margin-top: 5px;
+}
+.c{
+	list-style-position: inside;
+	list-style-type: none;
+	background-image: url(../images/xialaBJ.png);
+	width: 194px;
+	height: 28px;
+	line-height: 28px;
+	margin-left: -33px;
+	margin-top: 5px;
+	display: none;
+}
+.c img{
+	margin-left: 8px;
+}
+ul.xia li{
+	list-style-type: square;
+	font-family: 宋体；
+}
+ul.qun li{
+	list-style-type: square;
+	font-family: 宋体；
+}
+span{
+	color: blue;
+	font-size: 10px;
+}
+.a{
+	color: black;
+	font-size: 18px;
+	/*display: none;*/
+}
+.b{
+	color: red;
+	font-size: 18px;
+}
+li{
+	list-style-type: square;
+	color: gray;
+}
+.sz{
+	display: none;
+}
+.xia{
+	display: none;
+}
+.qun{
+	display: none;;
+}
+
+
+
+

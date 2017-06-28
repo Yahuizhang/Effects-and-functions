@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery+HTML5类似百度音乐网页播放器代码-【科e互联】</title>
+<link rel="stylesheet" href="css/stylesheets/style.css">
+<script src="js/jquery-1.7.2.min.js"></script>
+</head>
+<body class="keBody">
+<div class="kePublic">
+<!--效果html开始-->
+<div id="player">
+	<div class="cover"></div>
+	<div class="ctrl">
+		<div class="tag">
+			<strong>Title</strong>
+			<span class="artist">Artist</span>
+			<span class="album">Album</span>
+		</div>
+		<div class="control">
+			<div class="left">
+				<div class="rewind icon"></div>
+				<div class="playback icon" id="mycontrol"></div>
+				<div class="fastforward icon"></div>
+			</div>
+			<div class="volume right">
+				<div class="mute icon left"></div>
+				<div class="slider left">
+					<div class="pace"></div>
+				</div>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="slider" id = "myprogress">
+				<div class="loaded"></div>
+				<div class="pace"></div>
+			</div>
+			<div class="timer left">0:00</div>
+			<div class="right">
+				<div class="repeat icon"></div>
+				<div class="shuffle icon"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<ul id="playlist">
+</ul>
+<audio id="myaudio"></audio>
+<script src="js/jquery-ui-1.8.17.custom.min.js"></script>
+</div>
+</body>
+<script type="text/javascript">
+  var musicList={
+  	song:[	   
+  	   {
+  	   	"songName":"chenparty dj.mp3",
+         "songSrc":"mp3/chenparty dj.mp3",
+         "imgSrc":"img/3.jpg",
+         "artist": "德国童声",
+	      "album": "chenparty 超好听的德国童声 dj.mp3"
+  	   },
+  	   {
+  	   	"songName":"deguo音乐",
+         "songSrc":"mp3/deguo.mp3",
+         "imgSrc":"img/2.jpg",
+         "artist": "魔兽世界",
+	      "album": "魔兽世界 - 亡灵序曲.mp3"
+  	   },
+  	   {
+  	   	"songName":"弈剑听雨阁-小曲儿",
+         "songSrc":"mp3/弈剑听雨阁-小曲儿.mp3",
+         "imgSrc":"img/5.jpg",
+         "artist": "小曲儿",
+	      "album": "超好听的德国童声"
+  	   },
+  	   {
+  	   	"songName":"The Dawn.mp3",
+         "songSrc":"mp3/The Dawn.mp3",
+         "imgSrc":"img/5.jpg",
+         "artist": "德国童声",
+	      "album": "he Dawn.mp3"
+  	   },
+       {
+        "songName":"书香年华-许嵩_孙涛.mp3",
+         "songSrc":"mp3/书香年华-许嵩_孙涛.mp3",
+         "imgSrc":"img/4.jpg",
+         "artist": "许嵩_孙涛",
+        "album": "书香年华-许嵩_孙涛.mp3"
+       }
+  	]
+  }
+  //添加歌曲
+   for(var i=0;i<musicList.song.length;i++){
+    var item=musicList.song[i];
+    $("#playlist").append("<li>"+item.songName+"-"+item.artist+"</li>");
+   }
+   
+  //暂停、播放键
+  $("#mycontrol").click(function(){
+	if($("#myaudio")[0].paused){
+		$("#mycontrol").removeClass("playing");
+		$("#myaudio")[0].play();
+	}else
+	{
+		$("#mycontrol").addClass("playing");
+		$("#myaudio")[0].pause();
+	}
+})
+   //实现播放的进度
+   $("#myprogress").slider(
+   	   {change:changeSlider}
+   	);
+   var interval=setInterval(changeProgress,1000);
+   function changeProgress(){
+   	var currentTime=$("#myaudio")[0].currentTime;
+   	var duration=$("#myaudio")[0].duration;
+   	var perent=currentTime/duration;
+   	$("#myprogress a").css("left",perent*100+"%");
+    $("#myprogress .pace").css("width",perent*100+"%");
+    var currentSec = parseInt(currentTime%60) < 10 ? '0' + parseInt(currentTime%60) : parseInt(currentTime%60);//分钟之后的时间
+    $(".timer").html(parseInt(currentTime/60)+':'+currentSec);
+   }
+   //实现播放进度的拖动
+   function changeSlider(){
+   	var aleft=$("#myprogress a").css("left");
+   	var sliderWidth=$("#myprogress").css("width");
+   	var currentPerent=parseFloat(aleft)/parseFloat(sliderWidth);
+   	$("#myaudio")[0].currentTime=$("#myaudio")[0].duration*currentPerent;
+   }
+ //   //音量控制
+ $(".volume .slider").slider({
+	change:changeVolume
+})
+function changeVolume(){
+	var aLeft=$(".volume .slider a").css("left");
+	$(".volume .slider .pace").css("width",aLeft);
+	var volumePercent=parseFloat(aLeft)/parseFloat($(".volume .slider").css("width"));
+	$("#myaudio")[0].volume=volumePercent;
+}
+//单曲循环
+$(".repeat").click(function(){
+	if($(this).hasClass("once")){
+		$(this).removeClass("once");
+		$("#myaudio").removeAttr("loop");
+	}
+	else{
+		$(this).addClass("once");
+		$("#myaudio").attr("loop","loop");
+	}
+})
+//下一首
+    $(".fastforward").click(function(){
+var index=$("#playlist li").index($("#playlist .playing"));
+    if(index==$("#playlist li ").length-1){
+       $("#playlist li").removeClass("playing");
+       $("#playlist li").eq(0).addClass("playing");
+       $("#myaudio").attr("src",musicList.song[0].songSrc);
+       $("#myaudio")[0].play();
+       $("#mycontrol").addClass("playing");
+        $(".cover").html("<img src='"+musicList.song[0].imgSrc+"'/>");
+   $(".tag strong").html(musicList.song[0].songName);
+    $(".artist").html(musicList.song[0].artist);
+   $(".album").html(musicList.song[0].album);
+    }
+    else{
+    $("#playlist li").removeClass("playing");
+    $("#playlist li").eq(index+1).addClass("playing");   
+    $("#myaudio").attr("src",musicList.song[index + 1].songSrc);
+    $("#myaudio")[0].play();
+    $("#mycontrol").addClass("playing");
+    $(".cover").html("<img src='"+musicList.song[index+1].imgSrc+"'/>");
+   $(".tag strong").html(musicList.song[index+1].songName);
+    $(".artist").html(musicList.song[index+1].artist);
+   $(".album").html(musicList.song[index+1].album);
+    }   
+    })
+//上一首
+$(".rewind").click(function(){
+var index=$("#playlist li").index($("#playlist .playing"));
+
+    if(index==0){
+       $("#playlist li").removeClass("playing");
+       $("#playlist li").eq($("#playlist li ").length-1).addClass("playing");    
+       $("#myaudio").attr("src",musicList.song[$("#playlist li ").length- 1 ].songSrc);
+       $("#myaudio")[0].play( );
+       $("#mycontrol").addClass("playing");
+        $(".cover").html("<img src='"+musicList.song[$("#playlist li ").length- 1 ].imgSrc+"'/>");
+   $(".tag strong").html(musicList.song[$("#playlist li ").length- 1 ].songName);
+   $(".artist").html(musicList.song[$("#playlist li ").length- 1].artist);
+   $(".album").html(musicList.song[$("#playlist li ").length- 1].album);
+    }
+    else{
+    $("#playlist li").removeClass("playing");
+    $("#playlist li").eq(index-1).addClass("playing");   
+    $("#myaudio").attr("src",musicList.song[index - 1].songSrc);
+    $("#myaudio")[0].play();
+    $("#mycontrol").addClass("playing");
+        $(".cover").html("<img src='"+musicList.song[index-1].imgSrc+"'/>");
+   $(".tag strong").html(musicList.song[index-1].songName);
+    $(".artist").html(musicList.song[index-1].artist);
+   $(".album").html(musicList.song[index-1].album);
+     }
+ })
+ //点击列表切换歌曲
+$("#playlist li").click(function(){
+   $("#playlist li").removeClass("playing")
+   $(this).addClass("playing");
+   var index=$("#playlist li").index($("#playlist li[class='playing']"));
+   console.log(index);
+   $("#myaudio").attr("src",musicList.song[index].songSrc);
+   $(".cover").html("<img src='"+musicList.song[index].imgSrc+"'/>");
+   $(".tag strong").html(musicList.song[index].songName);
+   $(".artist").html(musicList.song[index].artist);
+   $(".album").html(musicList.song[index].album);
+   $("#myaudio")[0].play();
+   $("#mycontrol").addClass("playing");
+})  
+</script>
+</html>

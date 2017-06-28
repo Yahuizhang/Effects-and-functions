@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>北戴河区政府</title>
+<link href="css/public.css" rel="stylesheet" type="text/css">
+<link href="css/bbs.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src = "js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+   // //保存数据
+   //      function saveData(){
+   //          var mail = document.getElementById("textfield5");
+ 
+   //          //将信息保存到session中
+   //          sessionStorage.setItem("mail",mail.value);
+   //            //将信息存储到本地
+   //          localStorage.setItem("email",mail.value);
+   //      }
+ 
+   //      //读取数据
+   //      function loadData(){
+ 
+   //          //var msg = document.getElementById("msg");
+   //          //清除sessionStorage中的信息
+   //          sessionStorage.clear();
+   //          //从sessionStorage 中获取信息
+   //         var mail =  sessionStorage.getItem("mail");
+ 
+ 
+   //          //从localStorage中获取信息
+   //          var email = localStorage.getItem("email");
+   //          mail.value=mail+" , "+email;
+ 
+   //      }
+</script>
+</head>
+
+<body>
+	<div class="mybody">
+      <div class="right">
+       	  <h1>信箱 <span> LEADER EMAIL</span> </h1>
+          <div class="bbs">
+              <table width="100%" border="0" cellspacing="1" cellpadding="3" class="errorbbs" >
+                  <tr>
+                      <td height="40" align="right">真实姓名：</td>
+                      <td width="215" height="43" align="left"><input name="textfield2" type="text" id="textfield2" size="30" >
+                      <span class="red">*</span></td>
+                      <td width="111" align="right">身份证号：</td>
+                      <td width="341" align="left"><input name="textfield3" type="text" id="textfield3" size="30"> <span class="red">*</span></td>
+                  </tr>
+                  <tr>
+                      <td height="40" align="right">联系电话：</td>
+                      <td><input name="textfield4" type="text" id="textfield4" size="30"></td>
+                      <td align="right">Email：</td>
+                      <td><input name="textfield5" type="text" id="textfield5" size="30"></td>
+                  </tr>
+                  <tr>
+                      <td width="112" height="103" align="right">咨询内容：</td>
+                      <td colspan="3">
+                          <textarea name="textarea" cols="95" rows="5" id="textarea"></textarea>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td height="40" align="right">验证码：</td>
+                      <td colspan="3">
+                      <input name="textfield" type="text" id="textfield" size="10"></td>
+                  </tr>
+            
+                  <tr>
+                      <td height="56" align="right">&nbsp;</td>
+                      <td colspan="3"><input type="submit" name="submit" id="sendMail" value="提交留言" class="sub"></td>
+                  </tr>
+              </table>  
+          </div>   
+      </div>
+  </div>
+</body>
+<!-- cookie方法 -->
+<script type="text/javascript">
+  
+   window.onload=function(){
+       //名字
+   var name=document.getElementById("textfield2");
+      if(localStorage.text4){
+        name.value=localStorage.text4;
+      }
+      //身份证
+    var id = document.getElementById("textfield3");
+    if(localStorage.text1){
+      id.value=localStorage.text1;
+    }
+
+      // 电话
+    var tel = document.getElementById("textfield4");
+    if(localStorage.text2){
+      tel.value=localStorage.text2;
+      }
+     
+      // 邮箱
+      var email=document.getElementById("textfield5");
+      if(localStorage.text3){
+        email.value=localStorage.text3;
+      }
+      //资讯内容
+      var zixun=document.getElementById("textarea");
+      if(localStorage.text5){
+        zixun.value=localStorage.text5;
+      }
+
+    var btn = document.getElementById("sendMail");
+    btn.onclick = function(){
+      localStorage.text4=name.value;
+      localStorage.text1=id.value;
+      localStorage.text2=tel.value;
+      localStorage.text3=email.value;
+      localStorage.text5=zixun.value;
+     }
+
+}
+</script>
+
+</html>

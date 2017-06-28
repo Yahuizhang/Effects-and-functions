@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>	 	
+		<meta charset="utf-8">		
+		<title>Title Page</title>	
+	</head>
+	<body>
+		<canvas id="myCanvas" width="400px" height="400px" style="border:1px solid black;display:block;margin:0 auto;"></canvas>
+	</body>
+	<script type="text/javascript">
+
+	  setInterval(clock,1000);
+	  function clock(){
+
+       var currentTime=new Date();
+       var h=currentTime.getHours();
+       var m=currentTime.getMinutes();
+       var s=currentTime.getSeconds();
+
+	   var clock=document.getElementById("myCanvas");
+	   var cxt=clock.getContext("2d");
+	   //清除原来的效果
+	   cxt.clearRect(0,0,400,400);
+	   cxt.save();
+       //坐标
+	   cxt.translate(200,200);
+	   cxt.rotate(-Math.PI/2);
+
+	   //表盘
+	  cxt.beginPath();
+	  cxt.strokeStyle="blue";
+	  cxt.lineWidth=4;
+	  cxt.arc(0,0,100,0,Math.PI*2);
+	  cxt.stroke();//绘制
+	  cxt.closePath();
+
+	  //时针的绘制
+	  cxt.save();
+      var hourDu;
+      if(h>12){
+      	hourDu=(h-12)*Math.PI/6+m*Math.PI/360+s*Math.PI/(21600);
+      }else{
+      	hourDu=h*Math.PI/6+m*Math.PI/360+s*Math.PI/(21600);
+      }
+      cxt.beginPath();
+      cxt.rotate(hourDu);
+	  cxt.strokeStyle="red";
+	  cxt.lineWidth=3;
+      cxt.moveTo(-20,0);
+      cxt.lineTo(90,0);
+      cxt.stroke();//绘制
+      cxt.closePath();
+	  cxt.restore();
+
+     //分针的绘制
+     cxt.save();
+     var mDu=m*Math.PI/30+s*Math.PI/1800;
+     cxt.beginPath();
+      cxt.rotate(mDu);
+	  cxt.strokeStyle="red";
+	  cxt.lineWidth=2;
+	  cxt.moveTo(-24,0);
+	  cxt.lineTo(93,0);
+      cxt.stroke();//绘制
+      cxt.closePath();
+     cxt.restore();
+
+     //秒针的绘制
+     cxt.save();
+     var sDu=s*Math.PI/30;
+     cxt.beginPath();
+      cxt.rotate(sDu);
+	  cxt.strokeStyle="red";
+	  cxt.lineWidth=1;
+	  cxt.moveTo(-26,0);
+	  cxt.lineTo(95,0);
+      cxt.stroke();//绘制
+      cxt.closePath();
+   cxt.restore();
+     //绘制小刻度
+     cxt.save();
+     for(var i=0;i<60;i++){
+     	cxt.beginPath();
+     	cxt.rotate(Math.PI/30);
+     	cxt.strokeStyle="red";
+	    cxt.lineWidth=2;
+	    cxt.moveTo(96,0);
+	    cxt.lineTo(100,0);
+        cxt.stroke();//绘制
+        cxt.closePath();
+     }
+     cxt.restore();
+      //绘制大刻度
+     cxt.save();
+     for(var i=0;i<12;i++){
+     	cxt.beginPath();
+     	cxt.rotate(Math.PI/6);
+     	cxt.strokeStyle="red";
+	    cxt.lineWidth=4;
+	    cxt.moveTo(90,0);
+	    cxt.lineTo(100,0);
+        cxt.stroke();//绘制
+        cxt.closePath();
+     }
+     cxt.restore();
+     cxt.restore();
+ }
+
+	</script>
+</html>

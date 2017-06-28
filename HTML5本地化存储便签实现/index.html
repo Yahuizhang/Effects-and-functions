@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>便签</title>
+		<link rel="stylesheet" href="./css/main.css" />
+	</head>
+	
+	<body>
+		<input type="text" id="note_text" />
+		<input type="button" id="add_button" value="添加便签" />			
+		<input type="button" id="clear_button" value="清除所有" style="float:right;" />		
+		<ul id="stickies">
+			
+		</ul>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+		 $("#add_button").click(function(){
+		 	var note_text = $("#note_text").val();
+		 	var currentDate=new Date();
+		 	var time=currentDate.getTime();
+		 	var index="sticky"+time;//定义索引
+		 	var liNode = "<li  ondblclick='dblclick(this)' class='"+index+"'><span class='sticky'>"+note_text+"</span></li>"
+		 	$("#stickies").append(liNode);
+		 	localStorage[index] = note_text;
+		 })
+		 $("#clear_button").click(function(){
+		 	$("#stickies li").remove();
+		 	localStorage.clear();
+		 })
+		 $(document).ready(function(){
+		 	for(var i in localStorage){
+		 		if(i.indexOf("sticky")!=null){
+		 			var liNode = "<li ondblclick='dblclick(this)' class='"+ i +"'><span class='sticky'  class='"+ localStorage[i] +"'>"+localStorage[i]+"</span></li>";
+		 		$("#stickies").append(liNode);
+		 		}
+		 	}
+		 })
+		 function dblclick(xin){
+		     	$(xin).remove();
+		 		localStorage.removeItem($(xin).attr("class"));
+		     }
+	</script>
+
+</html>

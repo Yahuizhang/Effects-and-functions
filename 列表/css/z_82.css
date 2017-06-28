@@ -1,0 +1,45 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	margin: 220px 200px 100px 500px;
+}
+#titlediv{
+	background-image: url(../images/left_nav_title.gif);
+	background-repeat: no-repeat;
+	width: 183px;
+	height: 35px;
+	line-height: 35px;
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+}
+ul{
+	list-style-type: none;
+	list-style-image: url(../images/left_cur.gif);
+	background-image: url(../images/left_nav_txt.gif);
+	width: 183px;
+	
+
+}
+ul li{
+	margin-left: 30px;
+	height: 30px;
+	padding-top: 5px;
+	background-image: url(../images/left_nav_item.gif);
+	background-repeat: no-repeat;
+	background-position: -3em 90%;
+}
+#footdiv{
+	background-image: url(../images/left_nav_bottom.gif);
+	width: 183px;
+	height: 35px;
+}
+
+.erji{
+	display: none;
+	height: 105px;
+	padding-left: 24px;
+	width: 100px;
+}

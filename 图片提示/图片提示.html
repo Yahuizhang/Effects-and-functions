@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="js/jquery-1.12.1.js"></script>
+<title>图片提示</title>
+<style type="text/css">
+body{
+	margin:0;
+	padding:40px;
+	background:#fff;
+	font:80% Arial, Helvetica, sans-serif;
+	color:#555;
+	line-height:180%;
+}
+img{border:none;}
+ul,li{
+	margin:0;
+	padding:0;
+}
+li{
+	list-style:none;
+	float:left;
+	display:inline;
+	margin-right:10px;
+	border:1px solid #AAAAAA;
+}
+
+/* tooltip */
+#tooltip{
+	position:absolute;
+	border:1px solid #ccc;
+	background:#333;
+	padding:2px;
+	display:none;
+	color:#fff;
+}
+</style>
+
+</head>
+<body>
+<h3>有效果：</h3>
+	<ul>
+		<li><a href="images/apple_1_bigger.jpg" class="tooltip" title="苹果 iPod"><img src="images/apple_1.jpg" alt="苹果 iPod" /></a></li>
+		<li><a href="images/apple_2_bigger.jpg" class="tooltip" title="苹果 iPod nano"><img src="images/apple_2.jpg" alt="苹果 iPod nano"/></a></li>
+		<li><a href="images/apple_3_bigger.jpg" class="tooltip" title="苹果 iPhone"><img src="images/apple_3.jpg" alt="苹果 iPhone"/></a></li>
+		<li><a href="images/apple_4_bigger.jpg" class="tooltip" title="苹果 Mac"><img src="images/apple_4.jpg" alt="苹果 Mac"/></a></li>
+	</ul>
+
+<br/><br/><br/><br/>
+<br/><br/><br/><br/>
+
+<h3>无效果：</h3>
+<ul>
+		<li><a href="images/apple_1_bigger.jpg" title="苹果 iPod"><img src="images/apple_1.jpg" alt="苹果 iPod" /></a></li>
+		<li><a href="images/apple_2_bigger.jpg" title="苹果 iPod nano"><img src="images/apple_2.jpg" alt="苹果 iPod nano"/></a></li>
+		<li><a href="images/apple_3_bigger.jpg" title="苹果 iPhone"><img src="images/apple_3.jpg" alt="苹果 iPhone"/></a></li>
+		<li><a href="images/apple_4_bigger.jpg" title="苹果 Mac"><img src="images/apple_4.jpg" alt="苹果 Mac"/></a></li>
+	</ul>
+</body>
+<!--   引入jQuery -->
+<!--  
+ 思路：给图片绑定鼠标移上事件、移下事件、移动事件，鼠标移上图片时，添加一个div里面添加对应的图片变大显示，使用attend()方法添加div；鼠标移动时，添加的div跟随鼠标移动，使用事件对象e.Pagex和e.Pagey获得鼠标的相应位置，再此基础上加减设定的坐标即可使得图片出现在相应的位置；鼠标移下图片时，移除添加的div。
+ 相关知识：事件mouseover()，mousemove()，mouseout()；方法css(),append(),remove().show()；事件属性e.pageX(),e.pageY()；
+ 问题：添加的div如何跟随鼠标移动及获取鼠标的坐标    解决方法：同学交流
+
+ 遇到的问题及解决办法：添加img标签时，总是无法获取正确的图片路径。由于img标签外有一层双引号，而src作为img的属性要加一层单引号，this.href作为变量要在一层双引号里，并且前后都要加上“+”，否则系统不会讲this.href作为变量处理。 -->
+
+ <script type="text/javascript">
+	$(document).ready(function(){
+		var x=20;
+		var y=20;
+		$(".tooltip").mouseover(function(e){
+			var div=$("<div id='tooltip'>"+"<img src='"+this.href+"'/>"+"</div>");
+			$("body").append(div);
+			$("#tooltip").css({
+				"top":(e.pageY+y)+'px',
+				"left":(e.pageX+x)+'px',
+				"display":'block'
+				})
+			$("#tooltip").show("fast");
+			
+		})
+		$(".tooltip").mouseout(function(){
+			$("#tooltip").remove();
+		})
+		$(".tooltip").mousemove(function(e){
+			$("#tooltip").css({
+				"top":(e.pageY+y)+'px',
+				"left":(e.pageX+x)+'px',
+			});
+		});
+
+	});
+
+</script>
+
+
+</html>

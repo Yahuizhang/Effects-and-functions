@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<style type="text/css">
+		.decoimg_b2{
+			display: block;
+		}
+		.imgbox{
+			width:1000px;
+			height:390px;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div id="decoroll2" class="imgfocus">
+		<div id="decoimg_a2" class="imgbox">
+			<div class="decoimg_b2" ><a href="http://www.17sucai.com/"><img src="images/1.jpg" style="opacity: 1;"></a></div>
+			<div class="decoimg_b2" ><a href="http://www.17sucai.com/"><img src="images/2.jpg" style="opacity: 1;"></a></div>
+			<div class="decoimg_b2" ><a href="http://www.17sucai.com/"><img src="images/3.jpg" style="opacity: 1;"></a></div>
+			<div class="decoimg_b2" ><a href="http://www.17sucai.com/"><img src="images/4.jpg" style="opacity: 1;"></a></div>
+			<div class="decoimg_b2" ><a href="http://www.17sucai.com/"><img src="images/1.jpg" style="opacity: 1;"></a></div>
+		</div>
+		
+		<ul id="deconum2" class="num_a2">
+			<li><a href="javascript:void(0)" hidefocus="true" target="_self" class="current">杨幂</a></li>
+			<li><a href="javascript:void(0)" hidefocus="true" target="_self" class="">范冰冰</a></li>
+			<li><a href="javascript:void(0)" hidefocus="true" target="_self" class="">高圆圆</a></li>
+			<li><a href="javascript:void(0)" hidefocus="true" target="_self" class="">刘诗诗</a></li>
+		</ul>
+	</div>
+</body>
+ <script type="text/javascript">
+	$(function(){
+		index=0;
+        function roll(){
+        	$("li").eq(index).addClass("current");
+        	$(".decoimg_b2").eq(index).hide();
+        	index+=1;
+        	$(".decoimg_b2").eq(index).show();
+        	$("li").removeClass();
+        	$("li").eq(index).addClass("current");
+        	if (index==4){
+        		$(".decoimg_b2").eq(index).show();
+        		index=0;
+        	}
+        }
+        var r=setInterval(roll,1000);
+	})
+ </script>
+ <!-- 思路：使用定时器和slideUp()方法，实现图片一次向上滑动的效果，同时通过removeClass()和addClass()方法改变图片相对的名字的样式。
+ 相关知识：定时器，匿名函数，removeClass(),addClass(),eq(),slideUp(),css()
+ 问题：在改变相应的名字的样式时，索引值定位不准，名字与图片对不上  解决方法：老师授课 -->
+ <script type="text/javascript">
+	// var imgList=$(".decoimg_b2");
+	// var aList=$("#deconum2 li a");
+	// var imgindex=0;
+	// var aindex=0;
+	// var interval=setInterval(changeing,2000);
+	// function changeing(){
+	// 	// console.log("执行了一次");
+	// 	(function(){           //匿名函数只在函数内部起作用
+ //           aList.removeClass("current");
+	// 	   aList.eq(aindex+1).addClass("current");
+	// 	   // console.log(aindex);
+	// 	   console.log("执行匿名函数了一次");
+	// 	   if(aindex==2){
+	// 	   	aindex=-1;
+	// 	   }else{
+	// 	   	aindex=aindex+1;
+	// 	   }
+	// 	})();
+        
+	// 	imgList.eq(imgindex).slideUp(1000,function(){
+	// 		// console.log(imgindex);
+ //            if (imgindex==3){
+ //            	imgList.css("display","block");
+ //            	imgindex=0;
+ //            }else{
+ //            	imgindex=imgindex+1;
+ //            }
+	// 	})
+	// }
+</script>
+</html>
