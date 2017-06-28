@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script type="text/javascript" src="http://update2.locojoy.com/wz/js/jquery1.71.js"></script>
+</head>
+<body>
+<div>
+    <div style="height:290px;border:0px solid red;margin-top:15px">
+        <div class="hengslider" style="overflow:hidden;border:0px solid green">
+            <div id="content4">
+                <div class="item current">
+                    <div class="title title1bg" style="cursor: hand">
+                        <p class="titleNormal">最新攻略</p>
+                    </div>
+                    <div class="content4">
+
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="title title2bg" style="cursor: hand">
+                        <p class="titleNormal">视频攻略</p>
+                    </div>
+                    <div class="content4">
+
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="title title3bg" style="cursor: hand">
+                        <p class="titleNormal">玩家专访</p>
+                    </div>
+                    <div class="content4">
+
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="title title4bg" style="cursor: hand">
+                        <p class="titleNormal">同人世界</p>
+                    </div>
+                    <div class="content4">
+
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="title title5bg" style="cursor: hand">
+                        <p class="titleNormal">新闻公告</p>
+                    </div>
+                    <div class="content4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    // ............................横向slider
+    $(".title").click(function(){
+        var index = $(".item").index($(".current"));
+        var myindex = $(".item").index($(this).parent());
+        var nextindex = myindex + 1;
+        var preindex = myindex - 1;
+        if(myindex > index){
+            for(var i = index+1; i <= myindex; i++){
+                $(".item").eq(i).addClass("move");
+            }
+            $(".move").animate({"left":"-=375px"});
+            $(".item").removeClass("current");
+            $(".item").removeClass("move");
+            $(this).parent().addClass("current");
+        }
+        else{
+            for(var i = nextindex; i <= index; i++){
+                $(".item").eq(i).addClass("move");
+            }
+            $(".move").animate({"left":"+=375px"});
+            $(".item").removeClass("current");
+            $(".item").removeClass("move");
+            $(this).parent().addClass("current");
+        }
+
+
+    })
+</script>
+</body>
+</html>

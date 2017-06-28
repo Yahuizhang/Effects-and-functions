@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-size: 16px;
+    color: #333333;
+}
+ul,li{
+    list-style: none;
+}
+.mesgList{
+    width: 600px;
+    height: 90px;
+    overflow: hidden;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -300px;
+    background-color: #2ecc71;
+}
+.clearfix:after{
+    content:" ";
+    display:block;
+    clear:both;
+    visibility:hidden;
+    height:0;
+    line-height:0;
+}     /*重要*/
+/*对于在 IE8 中工作的 :after，必须声明 DOCTYPE。
+:after 选择器在被选元素的内容后面插入内容。
+请使用 content 属性来指定要插入的内容。
+*/

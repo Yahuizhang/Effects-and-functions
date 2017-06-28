@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js拖拽实例</title>
+</head>
+<style type="text/css" media="screen">
+   #dd{
+       width: 50px;
+       height: 50px;
+       border-radius: 50%;
+       background-color: #ddd;
+       position: absolute;
+       left: 200px;
+       top: 200px;
+   }
+</style>
+<body>
+<h2>js拖拽实例</h2>
+<div id="dd">
+
+</div>
+<script type="text/javascript">
+    //    获取dom节点
+    var dd = document.getElementById("dd");
+    //    为其添加鼠标按下事件
+    dd.onmousedown = function (ent) {
+        dd.style.backgroundColor = "red";
+        dd.style.cursor = "move";  //改变鼠标形状
+        // 兼容IE和谷歌
+        var event = ent || window.event;
+        //获取鼠标在dd中d的点击位置
+        var x=event.clientX-this.offsetLeft;
+        var y=event.clientY-this.offsetTop;
+
+        //添加鼠标移动事件
+        document.onmousemove=function(en){
+         var e=en || window.event;
+            //获取dd定位位置
+           dd.style.left=(e.clientX-x)+"px";
+           dd.style.top=(e.clientY-y)+"px";
+        }
+        //鼠标抬起事件
+        document.onmouseup=function(){
+            dd.style.backgroundColor="#ccc";
+            dd.style.cursor="default";
+            document.onmousemove=null;
+        }
+    }
+</script>
+</body>
+</html>

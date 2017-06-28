@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #te{
+            border:none;
+            opacity:0;
+        }
+    </style>
+</head>
+<body>
+<p id="pt">aaaaaaaaa</p>
+<input type="text" id="te" style="" value="fffffff" readonly>
+<input type="button" id="btn" value="点击复制">
+<script>
+    var pt=document.getElementById('pt');
+    var words=document.getElementById('te');
+    var btn=document.getElementById('btn');
+    var data = ClipboardEvent.clipboardData;
+    btn.addEventListener('click', function () {
+        words.setAttribute('value',pt.innerHTML);
+        words.select();
+        document.execCommand('Copy');
+        alert('Copy success, '+words.value);
+    });
+</script>
+</body>
+</html>

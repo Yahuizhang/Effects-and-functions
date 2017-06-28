@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D动画</title>
+    <link rel="stylesheet" href="css/index.css" type="text/css"/>
+</head>
+<body>
+   <!-- 从远处蹦出效果 start-->
+    <div class="demo1">
+        <div class="tu p_3d"></div>
+    </div>
+   <!-- 从远处蹦出效果 end-->
+
+
+    <!-- 星系旋转效果 start-->
+    <div class="base p_3d">
+        <div class="center">目录</div>
+        <div class="base_balls p_3d">
+            <div class="pan"></div>
+            <div class="base_ball p_3d ball_1">
+                <div class="ball">daima</div>
+            </div>
+            <div class="base_ball p_3d ball_2">
+                <div class="ball">222222</div>
+            </div>
+            <div class="base_ball p_3d ball_3">
+                <div class="ball">333333</div>
+            </div>
+            <div class="base_ball p_3d ball_4">
+                <div class="ball">444444</div>
+            </div>
+            <div class="base_ball p_3d ball_5">
+                <div class="ball">555555</div>
+            </div>
+            <div class="base_ball p_3d ball_6">
+                <div class="ball">666666</div>
+            </div>
+        </div>
+    </div>
+    <!-- 星系旋转效果 end-->
+
+    <!-- 正方体效果---- start------->
+   <!--<div class="cubeDiv"> &lt;!&ndash; 舞台元素，设置perspective，让其子元素获得透视效果 &ndash;&gt;-->
+       <!--<div class="container">  &lt;!&ndash; 容器，设置transform-style：preserve-3d，让其子元素在3d空间呈现 &ndash;&gt;-->
+           <!--<div class="top cube">1</div>   &lt;!&ndash;正方体的六面之一 &ndash;&gt;-->
+           <!--<div class="bottom cube">2</div>-->
+           <!--<div class="left cube">3</div>-->
+           <!--<div class="right cube">4</div>-->
+           <!--<div class="forward cube">5</div>-->
+           <!--<div class="backword cube">6</div>-->
+       <!--</div>-->
+   <!--</div>-->
+
+   <div id="experiment">
+       <div id="cube">
+           <div class="face" id="face1">1</div>
+           <div class="face" id="face2">2</div>
+           <div class="face" id="face3">3</div>
+           <div class="face" id="face4">4</div>
+           <div class="face" id="face5">5</div>
+           <div class="face" id="face6">6</div>
+       </div>
+   </div>
+   <div id="op">
+       <p>rotate x: <span id="degx-span">0</span> deg</p>
+       <input type="range" min="-360" max="360" id="rotatex" value="0" class="range-control" onchange="rotate()" /><br/>
+       <p>rotate y: <span id="degy-span">0</span> deg</p>
+       <input type="range" min="-360" max="360" id="rotatey" value="0" class="range-control" onchange="rotate()" /><br/>
+       <p>rotate z: <span id="degz-span">0</span> deg</p>
+       <input type="range" min="-360" max="360" id="rotatez" value="0" class="range-control" onchange="rotate()" /><br/>
+   </div>
+
+   <script type="text/javascript">
+       function rotate(){
+           var x = document.getElementById("rotatex").value;
+           var y = document.getElementById("rotatey").value;
+           var z = document.getElementById("rotatez").value;
+           document.getElementById('cube').style.webkitTransform = "rotateX("+x+"deg) rotateY("+y+"deg) rotateZ("+z+"deg)";
+
+           document.getElementById('degx-span').innerText = x;
+           document.getElementById('degy-span').innerText = y;
+           document.getElementById('degz-span').innerText = z;
+       }
+   </script>
+    <!-- 正方体墙效果----  end-->
+
+   <!-- 照片墙效果---- start------->
+
+   <!-- 照片墙效果----  end-->
+
+    <!-- 分别从左右上下进出的遮罩层 start-->
+   <div class="shadowDiv">
+        <div class="mask"></div>
+   </div>
+    <!-- 分别从左右上下进出的遮罩层 end-->
+
+    <!--旋转着由远及近start-->
+   <div class="invite">
+       <div class="content content_show"></div>
+   </div>
+    <!--旋转着由远及近end-->
+</body>
+</html>

@@ -1,0 +1,252 @@
+body{
+    background-color: #242424;
+    width: 100%;
+    height: 100%;
+}
+.onimg_bg{
+    background: red no-repeat;
+    width: 700px;
+    height: 150px;
+    margin:0 auto;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 20px;
+}
+.onimg{
+    position: absolute;
+    top: 70px;
+    left:50%;
+    width: 600px;
+    margin-left: -300px;
+    text-align: center;
+}
+/*伪元素实现*/
+.onimg_title:before{
+    display: inline-block;
+    position: relative;
+    top:-7px;
+    right: 20px;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border: 2px solid #fff;
+    transition: all 0.5s;
+
+}
+.onimg_title:after{
+    display: inline-block;
+    position: relative;
+    top:-7px;
+    left: 20px;
+    content: "";
+    width: 0px;
+    color: #fff;
+    height: 0px;
+    border: 2px solid #fff;
+    transition: all 0.5s;
+}
+.onimg_title:hover:after,.onimg_title:hover:before{
+    width: 200px;
+    /*left: 0;*/
+}
+.onimg:before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 0px;
+    height: 2px;
+    bottom: -2px;
+    background: #4285f4;
+    transition: all .3s;
+}
+.onimg:hover:before{
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+/*<!--鼠标移上边框变化 start-->*/
+.demo2{
+    width: 700px;
+    height: 300px;
+    background-color: black;
+    margin: auto;
+}
+.kuang{
+    width: 500px;
+    height: 300px;
+    margin: auto;
+    position: relative;
+}
+.wenzi{
+    width: 100%;
+    height:100%;
+    color: white;
+    text-align: center;
+    line-height: 200px;
+}
+.wenzi:before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 0px;
+    height: 2px;
+    bottom: 0px;
+    background: white;
+    transition: all .3s;
+}
+.wenzi:hover:before{
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+.wenzi:after{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 0;
+    top: 50%;
+    left: 0;
+    background: white;
+    transition: all .3s;
+}
+.wenzi:hover:after{
+    height: 100%;
+    top: 0;
+    bottom: 0;
+}
+.kuang:before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 0px;
+    height: 2px;
+    top: 0px;
+    background: white;
+    transition: all .3s;
+}
+.kuang:hover:before{
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+.kuang:after{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 0;
+    top: 50%;
+    right: 0;
+    background: white;
+    transition: all .3s;
+}
+.kuang:hover:after{
+    height: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+/*<!--鼠标移上边框变化 end-->*/
+
+/*鼠标移上 图片显示 start*/
+.demo3 {
+    width: 300px;
+    height: 300px;
+    background: rgb(255, 255, 255);
+    margin:auto;
+    text-align: center;
+    border-radius: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.demo3 img{
+    margin-top: 10px;
+}
+.demo3 h1{
+    color: rgba(189, 185, 199, 0);
+    font-family: "Microsoft YaHei", "SimSun", "SimHei", Arial, Tahoma, Helvetica;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;   /*控制文本的大小写，uppercase定义为仅有大写字母*/
+    -webkit-font-smoothing:antialiased;  /*属性可以使页面上的字体抗锯齿*/
+    user-select: none;  /*除替换元素外的所有元素*/
+    transition:color 0.8s ease-in-out
+}
+.demo3:before,.demo3:after{
+    border-radius: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:inherit;  /*继承父元素的宽度*/
+    height: inherit;
+    box-shadow: inset 10.6em 0 0 rgba(123, 239, 138, 0.2),
+                inset 0 10.6em 0 rgba(247, 110, 224, 0.2),
+                inset -10.6em 0 0 rgba(226, 128, 132, 0.2),
+                inset 0 -10.6em 0 rgba(230, 186, 85, 0.2);
+    transition: box-shadow 0.75s;
+}
+.demo3:after{
+    transform:rotate(45deg);
+}
+
+.demo3:hover:before,.demo3:hover:after{
+    box-shadow: inset 0.86em 0 0 rgba(255, 0, 0, 0.5),
+    inset 0 0.86em 0 rgba(252, 150, 0, 0.5),
+    inset -0.86em 0 0 rgba(0, 255, 0, 0.5),
+    inset 0 -0.86em 0 rgba(0, 150, 255, 0.5);
+}
+.demo3:hover>h1{
+    color: rgba(185,185,185,1);
+}
+
+/*鼠标移上 图片显示 end*/
+
+/*demo4   */
+.demo4{
+    width: 800px;
+    height: 300px;
+    margin: 50px auto;
+    background: url(../img/pc_main_tu2.png) no-repeat;
+    background-size:2000px 1000px;
+    background-position: -400px -250px;
+    position: relative;
+}
+.content{
+    width: 700px;
+    height: 200px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 20px;
+    z-index: 10;
+    box-shadow: 0 0 20px rgb(222, 238, 233);
+    overflow: hidden;
+}
+.content:after{
+    width: 700px;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(../img/pc_main_tu2.png) no-repeat;
+    background-size:2000px 1000px;
+    background-position: -450px -300px;
+    /*background-attachment: fixed;         此处fixed没有作用？？？（未解）   因此用上一行代码手动对齐图片*/
+    /*background-color:rgba(255,255,255,0.8);*/
+    z-index:-1;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -ms-filter: blur(10px);
+    -o-filter: blur(10px);
+    filter: blur(10px);
+/*伪元素不能通过width：100%；和height：100%；来继承宿主元素的尺寸，所以通过上述方式
+来继承content的尺寸*/
+}
+
+
+/*demo4   */

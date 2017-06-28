@@ -1,0 +1,126 @@
+
+
+/*.................................................*/
+.hengslider,#content4{
+    height: 290px;
+    width: 875px;
+    position: relative;
+}
+.hengslider{
+    margin-left: 14px;
+}
+.item{
+    width:475px;
+    height:290px;
+    float:left;
+    overflow: hidden;
+}
+.item:nth-child(1){
+    position: absolute;
+    left: 0px;
+}
+.item:nth-child(2){
+    position: absolute;
+    left: 475px;
+}
+.item:nth-child(3){
+    position: absolute;
+    left: 575px;
+}
+.item:nth-child(4){
+    position: absolute;
+    left: 675px;
+}
+.item:nth-child(5){
+    position: absolute;
+    left: 775px;
+}
+.active{
+    width:475px;
+}
+.current{}
+.title{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    background-color: white;
+
+}
+.title1bg{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    background-color:#334250 ;
+}
+.title1bg:hover{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.title2bg{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    background-color: wheat;
+
+}
+.title2bg:hover{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.title3bg{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    background-color: #334250;
+}
+.title3bg:hover{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.title4bg{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    background-color: wheat;
+}
+.title4bg:hover{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.title5bg{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    background-color: #334250;
+}
+.title5bg:hover{
+    width:100px;
+    height:290px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.titleNormal{
+    width: 10px;
+    height: 290px;
+    font-size: 28px;
+    color: rgb(225, 138, 50);
+    margin-left: 35px;
+    padding-top: 50px;
+    font-weight: bold;
+}
+.content4{
+    width:375px;
+    height: 290px;
+    overflow: hidden;
+    margin-top: -290px;
+    margin-left: 100px;
+    background-color: red;
+}
